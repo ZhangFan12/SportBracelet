@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>智能腕表</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="header clearfix">
+	<div class="title">
+		<i class="icon iconfont">&#xe606;</i>
+		<div class="text">
+			<span>智能腕表</span>
+			<span>SmartWatch</span>
+		</div>
+	</div>
+	<ul class="top-nav">
+		<li class="active"><i class="icon iconfont">&#xe60c;</i><span>功能</span></li>
+		<li><i class="icon iconfont">&#xe600;</i><span>设置</span></li>
+		<li><i class="icon iconfont">&#xe603;</i><span>其它</span></li>
+	</ul>
+	<i class="icon iconfont r-btn">&#xe607;</i>
+</header>
+<!-- 功能 -->
+<ul class="aside-nav">
+	<li class="active">时间闹钟</li>
+	<li>地图定位</li>
+	<li>跌倒告警</li>
+	<li>脱落警示</li>
+	<!-- <li>畅聊语音</li> -->
+</ul>
+<div class="content">
+	<!-- 时间闹钟 -->
+	<div class="box-shell">
+		<div class="time-alarm">
+			<div class="real-time-display" id="real_time">
+				<img class="bg" src="images/real-time-bg.png" alt="">
+				<div class="time-text"><span id="alarm_value" class="icon iconfont time-btn" onclick="setupTime.open($(this))">11:30</span></div>
+			</div>
+			<div class="real-time-title">当前时间</div>
+			<hr class="real-time-hr">
+			<ul class="week-nav clearfix">
+				<li><a>周一</a></li>
+				<li class="active"><a>周二</a></li>
+				<li class="active"><a>周三</a></li>
+				<li><a>周四</a></li>
+				<li><a>周五</a></li>
+				<li><a>周六</a></li>
+				<li><a>周日</a></li>
+			</ul>
+			<button class="btn btn-time" onclick="Alarm.add()">添加闹钟</button>
+		</div>
+		<ul class="alarm-list">
+		</ul>
+	</div>
+	<!-- /时间闹钟 -->
+	<!-- 地图定位 -->
+	<div class="box-shell">
+		<div class="map-gps"></div>
+		<button class="btn btn-red">菜单</button>
+	</div>
+	<!-- /地图定位 -->
+	<!-- 跌倒告警 -->
+	<div class="box-shell">
+		<div class="fall-alarm">
+			<img src="images/fall-alarm-on.png" alt="">
+			<div class="title">开启</div>
+			<!-- <img src="images/fall-alarm-off.png" alt="">
+			<div class="title">关闭</div> -->
+		</div>
+	</div>
+	<!-- /跌倒告警 -->
+	<!-- 脱落警示 -->
+	<div class="box-shell">
+		<div class="shed-warn">
+			<img src="images/fall-off-warning-on.png" alt="">
+			<div class="title">使用状态：<span>脱落状态</span></div>
+			<div class="text">
+				<div class="name">智能腕表</div>
+				<p>智能腕表是具有信息处理能力，符合手表基本技术要求的手表。除指示时间之外，还应具有提醒、导航、校准、监测、交互等其中一种或者多种功能；显示方式包括指针、数字、图像等。</p>
+			</div>
+			<!-- <img src="fall-off-warning-off.png" alt="">
+			<div class="title">关闭</div> -->
+		</div>
+	</div>
+	<!-- /脱落警示 -->
+	<!-- 畅聊语音 -->
+	<!-- <div class="box-shell">
+		畅聊语音
+	</div> -->
+	<!-- /畅聊语音 -->
+</div>
+<!-- /功能 -->
+<!-- 设置 -->
+<ul class="aside-nav">
+	<li class="active">亲情号码</li>
+	<li>用户指纹</li>
+</ul>
+<div class="content">
+	<!-- 亲情号码 -->
+	<div class="box-shell">
+		<div class="famliy-num">
+			<div class="title">添加亲情号码：</div>
+			<div class="body">
+				<label><i class="icon iconfont">&#xe608;</i></label>	
+				<input id="check_phone" type="text"></input>
+				<button><i class="icon iconfont" onclick="RightList.add($(this))">&#xe60e;</i></button>	
+			</div>
+		</div>
+		<dl class="right-list">
+			<dt>已添加亲情号码</dt>
+			<dd>
+				<span>13333333333</span>
+				<i class="icon iconfont" onclick="RightList.modify($(this),0)">&#xe60b;</i>
+				<i class="icon iconfont" onclick="RightList.del($(this),0)">&#xe601;</i>
+				<img class="active-img" src="images/user-finger-img2.png" alt="">
+			</dd>
+			<dd class="active">
+				<span>13333333333</span>
+				<i class="icon iconfont" onclick="RightList.modify($(this),0)">&#xe60b;</i>
+				<i class="icon iconfont" onclick="RightList.del($(this),0)">&#xe601;</i>
+				<img class="active-img" src="images/user-finger-img2.png" alt="">
+			</dd>
+		</dl>
+	</div>
+	<!-- /亲情号码 -->
+	<!-- 用户指纹 -->
+	<div class="box-shell">
+		<div class="user-finger">
+			<img src="images/user-finger-on.gif" alt=""><br>
+			<input class="name" value="指纹"><br>
+			<button class="btn btn-blue" onclick="Btn.resetBtn($('.user-finger .name'),'指纹')">重置</button>
+			<button class="btn btn-red" onclick="RightList.add($(this))">提交</button>
+		</div>
+		<dl class="right-list">
+			<dt>已添加指纹</dt>
+			<dd>
+				<img class="logo" src="images/user-finger-img1.png" alt="">
+				<span>指纹</span>
+				<i class="icon iconfont" onclick="RightList.del($(this),1)">&#xe601;</i>
+			</dd>
+			<dd>
+				<img class="logo" src="images/user-finger-img1.png" alt="">
+				<span>指纹</span>
+				<i class="icon iconfont" onclick="RightList.del($(this),1)">&#xe601;</i>
+			</dd>
+		</dl>
+	</div>
+	<!-- /用户指纹 -->
+</div>
+<!-- /设置 -->
+<!-- 其它 -->
+<ul class="aside-nav">
+	<li class="active">产品介绍</li>
+	<li>版本更新</li>
+	<li>当前版本</li>
+</ul>
+<div class="content">
+	<!-- 产品介绍 -->
+	<div class="box-shell">
+		<div class="product-intr">
+			<div class="title btn">产品介绍</div>
+			<p>智能腕表是具有信息处理能力，符合手表基本技术要求的手表。除指示时间之外，还应具有提醒、导航、校准、监测、交互等其中一种或者多种功能；显示方式包括指针、数字、图像等。2013年3月媒体报道，苹果、三星、谷歌等科技巨头都将在2013年晚些时候发布智能手表。美国市场研究公司Current Analysis分析师艾维·格林加特(Avi Greengart)认为2013年可能会成为智能手表元年。</p>
+			<p>智能手表是具有信息处理能力，符合手表基本技术要求的手表。除指示时间之外，还应具有提醒、导航、校准、监测、交互等其中一种或者多种功能；显示方式包括指针、数字、图像等。2013年3月媒体报道，苹果、三星、谷歌等科技巨头都将在2013年晚些时候发布智能手表。美国市场研究公司Current Analysis分析师艾维·格林加特(Avi Greengart)认为2013年可能会成为智能手表元年。</p>
+		</div>
+	</div>
+	<!-- /产品介绍 -->
+	<!-- 版本更新 -->
+	<div class="box-shell edition-bg">
+		<div class="edition">
+			<div class="text2">版本更新：您的系统已经是最新版本</div>
+			<button class="btn btn-blue">更新</button>
+		</div>
+	</div>
+	<!-- /版本更新 -->
+	<!-- 当前版本 -->
+	<div class="box-shell edition-bg">
+		<div class="edition">
+			<div class="text">当前版本：SmartWatch1.0</div>
+			<hr>
+			<div class="text2">您的系统已经是最新版本</div>
+		</div>
+	</div>
+	<!-- /当前版本 -->
+</div>
+<!-- /其它 -->
+
+<!-- js -->
+<script type="text/javascript" src="js/jquery2.2.4.min.js"></script>
+<script type="text/javascript" src="js/touch-0.2.14.min.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
+</body>
+</html>

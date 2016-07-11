@@ -1,0 +1,525 @@
+@import "reset.css";
+@import "iconfont.css";
+@import "time-alarm";
+$color1-1: #fff;//字体白
+$color1-2: #525252;//字体黑
+$color2-1: #3498dB;//蓝
+$color2-2: #2c81ba;//蓝active
+$color2-3: #03a2df;//蓝logo
+$color2-4: #24557b;//蓝font
+$color3-1: #eaeaea;//灰
+$color3-2: #e0e0e0;//深灰
+$color4-1: #e74c3c;//红
+body {
+	position: absolute;
+	box-sizing: border-box;
+	padding: 75px 0 5px 160px;
+	width: 100%;
+	height: 100%;
+	color: #222222;
+	background-color: $color3-1;
+}
+.header {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 70px;
+	.title {
+		display: inline-block;
+		float: left;
+		width: 120px;
+		height: 100%;
+		color: $color2-3;
+		background-color: $color1-1;
+		i {
+			position: absolute;
+			top: 15px;
+			left: 4px;
+			font-size: 32px;
+		}
+		.text {
+			position: absolute;
+			top: 20px;
+			left: 31px;
+			display: block;
+			font-weight: bold;
+			text-align: center;
+			span {
+				display: block;
+				margin-bottom: 4px;
+			}
+			span + span {
+				font-size: 12px;
+				margin-bottom: 0;
+			}
+		}
+	}
+	.r-btn {
+		cursor: pointer;
+		position: absolute;
+		top: 18px;
+		right: 1em;
+		font-size: 32px;
+		color: $color1-1;
+	}
+}
+.top-nav {
+	display: inline-block;
+	float: left;
+	width: calc(100% - 120px);
+	height: 100%;
+	color: $color1-1;
+	text-align: center;
+	background-color: $color2-1;
+	li {
+		cursor: pointer;
+		display: inline-block;
+		float: left;
+		width: 200px;
+		height: 100%;
+		font-size: 12px;
+		border-right: 1px solid $color3-1;
+		i {
+			display: block;
+			margin-top: 11px;
+			margin-bottom: 5px;
+			font-size: 30px;
+		}
+		span {
+			display: block;
+		}
+	}
+	.active {
+		background-color: $color2-2;
+	}
+}
+.aside-nav {
+	display: none;
+	position: absolute;
+	top: 75px;
+	left: 0;
+	width: 150px;
+	height: calc(100% - 75px);
+	text-align: center;
+	background-color: $color1-1;
+	li {
+		cursor: pointer;
+		display: block;
+		box-sizing: border-box;
+		padding: 13px;
+		width: 100%;
+		height: 40px;
+		font-size: 12px;
+		border-bottom: 1px solid $color3-1;
+	}
+	.active {
+		color: $color1-1;
+		background-color: $color2-2;
+	}
+}
+.content {
+	display: none;
+	position: relative;
+	width: 100%;
+	height: 100%;
+	border-radius: 5px 0 0 5px;
+	background-color: $color1-1;
+}
+.box-shell {
+	display: none;
+	box-sizing: border-box;
+	position: relative;
+	padding: 15px;
+	width: 100%;
+	height: 100%;
+}
+.right-list {
+	overflow-y :auto;
+	position: absolute;
+	right: 0;
+    bottom: 0;
+    top: 0;
+	width: calc(26% + 10px);
+	color: $color2-1;
+	background-color: $color3-2;
+	dt,dd {
+		position: relative;
+		box-sizing: border-box;
+		padding-left: 1em;
+		padding-right: 1em;
+		height: 50px;
+		line-height: 50px;
+		border-bottom: 1px solid $color1-1;
+		span {
+			overflow: hidden;
+			display: inline-block;
+			width: 36%;
+			height: 50px;
+			line-height: 50px;
+			vertical-align: top;
+		}
+		i {
+			float: right;
+			margin: 0 5px;
+			line-height: 50px;
+			font-size: 20px;
+		}
+		.logo {
+			margin: 5px 0;
+			height: 40px;
+		}
+		.active-img {
+			display: none;
+			float: right;
+			margin: 15px 5px 15px 0;
+			height: 20px;
+		}
+	}
+	.active .active-img {
+		display: inline-block;
+	}
+	dt {
+		height: 40px;
+		line-height: 40px;
+	}
+}
+//时间闹钟
+.time-alarm,
+.time-alarm-modify {
+	overflow-y :auto;
+	display: inline-block;
+	float: left;
+	width: 100%;
+	height: 100%;
+	color: $color2-4;
+	text-align: center;
+	.real-time-display {
+		position: relative;
+		height: 65%;
+		min-height: 255px;
+		.bg {
+			// width: 255px;
+			height: 100%;
+			-webkit-transform: rotate(0deg);
+			-ms-transform: rotate(0deg);
+			-o-transform: rotate(0deg);
+			transform: rotate(0deg);
+		}
+		.time-text {
+			position: absolute;
+			top: calc(50% - 35px);
+			width: 100%;
+			.icon{
+				cursor: pointer;
+				font-size: 70px;
+				letter-spacing: 4px;
+			}
+		}
+	}
+	.real-time-title {
+		padding: 10px;
+		font-size: 1em;
+	}
+	.real-time-hr {
+		border-bottom: 1px solid $color2-2;
+	}
+	.week-nav {
+		padding: 5px 0 15px 0;
+		height: 11.5%;
+		min-height: 45px;
+		li {
+			float: left;
+			width: 14.2%;
+			a {
+				cursor: pointer;
+				box-sizing: border-box;
+				display: inline-block;
+				padding-top: 14px;
+				width: 45px;
+				height: 45px;
+				font-size: 1em;
+				//text-align: center;
+			}
+		}
+		.active {
+			a {
+				border: 1px solid $color2-4;
+				border-radius: 45px;
+			}
+		}
+	}
+}
+.time-alarm-modify {
+	display: none;
+	float: right;
+    width: 70%;
+}
+.alarm-list {
+	overflow-y :auto;
+	display: none;
+	position: absolute;
+	right: 0;
+    bottom: 0;
+    top: 0;
+	width: calc(26% + 10px);
+	// height: 100%;
+	text-align: center;
+	color: $color2-1;
+	background-color: $color3-2;
+	li {
+		position: relative;
+		box-sizing: border-box;
+		height: 80px;
+		border-bottom: 1px solid $color1-1;
+		.title {
+			position: absolute;
+			top: 15px;
+			left: 15px;
+		}
+		.state {
+			position: absolute;
+			left: 15px;
+			bottom: 15px;
+		}
+		.time-btn {
+			display: inline-block;
+			box-sizing: border-box;
+			margin: 15px 20px; 
+			width: 50px;
+			height: 50px;
+			padding-top: 17px;
+			border: 1px solid $color2-1;
+			border-radius: 50px;
+		}
+		.icon-btn {
+			position: absolute;
+			top: 28px;
+			right: 15px;
+		}
+	}
+}
+//地图定位
+.map-gps {
+	display: inline-block;
+	box-sizing: border-box;
+	width: 80%;
+	height: 100%;
+	border: 5px solid $color3-2;
+	border-radius: 5px;
+	background-image: url("../images/map.png");
+}
+.map-gps + button {
+	position: absolute;
+	right: 15px;
+	bottom: 15px;
+	width: 18%;
+}
+//跌倒警告
+.fall-alarm {
+	position: absolute;
+	top: 15%;
+    left: 20%;
+    width: 60%;
+    height: 70%;
+	text-align: center;
+	img {
+		height: 90%;
+	}
+	.title {
+		color: $color1-1;
+		font-size: 1.4em;
+	}
+}
+//脱落警示
+.shed-warn {
+	position: absolute;
+	top: 15%;
+    left: 25%;
+    width: 60%;
+    height: 70%;
+	// text-align: center;
+	img {
+		display: inline-block;
+		float: left;
+		height: 100%;
+	}
+	.title {
+		display: inline-block;
+		float: left;
+		margin-top: 12%;
+		margin-left: 10%;
+		font-size: 1.2em;
+		font-weight: bold;
+		span {
+			color: $color4-1;
+		}
+	}
+	.text {
+		display: inline-block;
+		float: left;
+		margin-top: 4%;
+		margin-left: 10%;
+		width: 50%;
+		.name {
+			margin-bottom: 0.5em;
+			font-size: 1.2em;
+			font-weight: bold;
+		}
+		p {
+			line-height: 1.6em;
+		}
+	}
+}
+//亲情号码
+.famliy-num,
+.famliy-num-modify {
+	position: absolute;
+	top: 34%;
+	left: 16%;
+    width: 40%;
+    text-align: left;
+    .title {
+    	font-size: 1.2em;
+    }
+    .body {
+    	margin-top: 1em;
+    	width: 100%;
+	    label,
+	    button {
+	    	display: inline-block;
+	    	float: left;
+	    	width: 20%;
+	    	height: 50px;
+	    	color: $color1-1;
+	    	text-align: center;
+	    	line-height: 50px;
+	    	border-radius:5px 0 0 5px;
+	    	background-color: $color2-2;
+	    }
+	    input {
+	    	display: inline-block;
+	    	float: left;
+	    	box-sizing: border-box;
+	    	padding: 0 1em;
+	    	width: 60%;
+	    	height: 50px;
+	    	line-height: 50px;
+	    	border:1px solid $color3-2;
+	    	border-left:0;
+	    	border-right:0;
+	    }
+	    button {
+	    	border: 0;
+	    	border-radius: 0 5px 5px 0;
+	    	background-color: $color4-1;
+	    }
+    	i {
+    		font-size: 2em;
+    	}
+    }
+}
+.famliy-num-modify {
+	display: none;
+    left: 44%;
+}
+//用户指纹
+.user-finger {
+	position: absolute;
+	top: 8%;
+    left: 15px;
+    width: 70%;
+    height: 84%;
+    text-align: center;
+	img {
+		height: 68%;
+	}
+	.name {
+	    outline: none;
+		display: inline-block;
+	    box-sizing: border-box;
+		margin: 1em 1em 0 1em;
+	    padding: 10px 3em;
+		width: 30%;
+	    // color: $color1-2;
+	    text-align: center;
+	    border: 1px solid #525252;
+	    border-radius: 5px;
+	    background-color: $color1-1;
+	}
+	.btn {
+		display: inline-block;
+		margin: 1.2em 1em 0 1em;
+	}
+}
+//产品介绍
+.product-intr {
+	overflow-y :auto;
+	box-sizing: border-box;
+	padding: 5% 10%;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	.title {
+		display: inline-block;
+		margin-bottom: 1em;
+		font-weight: bold;
+	}
+	p {
+		line-height: 2em;
+		text-align: justify;
+		text-indent: 2em;
+	}
+}
+//版本
+.edition-bg {
+	background-image: url(../images/edition-bg.gif);
+	background-size: 100% 100%;
+}
+.edition {
+	position: absolute;
+	top: 40%;
+	left: 33%;
+	width: 34%;
+	text-align: center;
+	.text {
+		font-size: 1.4em;
+		color: $color2-1;
+	}
+	.text2 {
+		margin-bottom: 10px;
+		font-size: 1.2em;
+	}
+	hr {
+		margin-top: 10px;
+		margin-bottom: 10px;
+		border-bottom: 1px solid $color1-2;
+	}
+}
+//btn
+.btn {
+	box-sizing: border-box;
+	outline:none;
+	cursor: pointer;
+	padding: 10px 3em;
+	color: $color1-2;
+	border: 1px solid $color1-2;
+	border-radius: 5px;
+	background-color: $color3-2;
+}
+.btn-time,
+.btn-blue,
+.btn-red {
+	color: $color1-1;
+	border: 0;
+}
+.btn-time {
+	border-radius: 34px;
+	background-color: $color2-2;
+}
+.btn-blue {
+	background-color: $color2-2;
+}
+.btn-red {
+	background-color: $color4-1;
+}
